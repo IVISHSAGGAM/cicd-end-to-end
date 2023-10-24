@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'dfc60276-89bb-4806-a66a-de91a7c58dda', url: 'https://github.com/IVISHSAGGAM/cicd-end-to-end.git',
+                git url: 'https://github.com/IVISHSAGGAM/cicd-end-to-end.git',
                 branch: 'master'
            }
         }
@@ -39,7 +39,7 @@ pipeline {
         
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: 'dfc60276-89bb-4806-a66a-de91a7c58dda', url: 'https://github.com/IVISHSAGGAM/cicd-end-to-end.git',
+                git url: 'https://github.com/IVISHSAGGAM/cicd-end-to-end.git',
                 branch: 'master'
             }
         }
