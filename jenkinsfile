@@ -60,7 +60,7 @@ pipeline {
                         git add k8s-manifests/deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
-                        git push -u origin HEAD:main
+                        git push origin HEAD:main
                         '''                        
                     }
                 }
