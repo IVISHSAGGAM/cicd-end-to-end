@@ -55,7 +55,7 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'my-github-id', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
                         cat k8s-manifests/deploy.yml
-                        sed -i '' "s/32/${BUILD_NUMBER}/g" k8s-manifests/deploy.yml/
+                        sed -i "s/32/${BUILD_NUMBER}/g" k8s-manifests/deploy.yml
                         cat k8s-manifests/deploy.yml
                         git add k8s-manifests/deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
