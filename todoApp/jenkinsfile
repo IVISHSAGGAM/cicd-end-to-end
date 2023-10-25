@@ -21,7 +21,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t ivishsaggam/todo:v2:${BUILD_NUMBER} .
+                    docker build -t ivishsaggam/todo:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Push to Repo'
-                    docker push ivishsaggam/todo:v2:${BUILD_NUMBER}
+                    docker push ivishsaggam/todo:${BUILD_NUMBER}
                     '''
                 }
             }
