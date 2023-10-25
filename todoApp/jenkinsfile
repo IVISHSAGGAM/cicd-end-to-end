@@ -20,7 +20,8 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build -t ivishsaggam/todo:${BUILD_NUMBER} .
+                    docker.build("ivishsaggam/todo:${BUILD_NUMBER}", "-f todoApp/Dockerfile .")
+
                     '''
                 }
             }
