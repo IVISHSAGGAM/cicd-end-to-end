@@ -30,10 +30,14 @@ pipeline {
         stage('Push the artifacts'){
            steps{
                 script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push ivishsaggam/todo:${BUILD_NUMBER}
-                    '''
+                    withCredentials([usernamePassword(credentialsId: 'my-dockerhub-id', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                        sh '''
+                        echo 'Push to Repo'
+                        docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+                        docker push ivishsaggam/todo:${BUILD_NUMBER}
+                        docker logout
+                        '''
+                  }
                 }
             }
         }
