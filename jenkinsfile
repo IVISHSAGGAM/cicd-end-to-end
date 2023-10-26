@@ -10,7 +10,7 @@ pipeline {
         
         stage('Checkout'){
            steps {
-                git credentialsId: 'my-github-id', url: 'https://github.com/IVISHSAGGAM/cicd-end-to-end',
+                git credentialsId: 'my-github-id', url: 'https://{ivishsaggam}:{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}@github.com/IVISHSAGGAM/cicd-k8s-manifests.git',
                 branch: 'master'
            }
         }
