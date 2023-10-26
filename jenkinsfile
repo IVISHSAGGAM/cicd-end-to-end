@@ -53,6 +53,7 @@ pipeline {
             environment{
                 GIT_REPO_NAME = "cicd-k8s-manifests"
                 GIT_USER_NAME = "ivishsaggam"
+                NEW_IMAGE_TAG = BUILD_NUMBER
             }
             steps {
                 script{
@@ -61,7 +62,7 @@ pipeline {
                         cat k8s-manifests/deploy.yml
                         git config user.email "vishal.saggam72@gmail.com"
                         git config user.name "Vishal Saggam"
-                        sed -i "s/IMAGE_TAG/${BUILD_NUMBER}/g" k8s-manifests/deploy.yml
+                        sed -i "s|image: ivishsaggam/todo:${NEW_IMAGE_TAG}|image: ivishsaggam/todo:${BUILD_NUMBER}|g" k8s-manifests/deploy.yml
                         cat k8s-manifests/deploy.yml
                         git add k8s-manifests/deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
