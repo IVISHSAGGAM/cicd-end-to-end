@@ -53,10 +53,11 @@ pipeline {
             environment{
                 GIT_REPO_NAME = "cicd-k8s-manifests"
                 GIT_USER_NAME = "ivishsaggam"
-                NEW_IMAGE_TAG = BUILD_NUMBER
+                
             }
             steps {
                 script{
+                    def NEW_IMAGE_TAG = BUILD_NUMBER.toString()
                     withCredentials([usernamePassword(credentialsId: 'my-github-id', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                         sh '''
                         cat k8s-manifests/deploy.yml
