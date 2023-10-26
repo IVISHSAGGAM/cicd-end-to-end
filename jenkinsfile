@@ -42,12 +42,12 @@ pipeline {
             }
         }
         
-        stage('Checkout K8S manifest SCM'){
-            steps {
-                git credentialsId: 'my-github-id', url: 'https://github.com/ivishsaggam/cicd-k8s-manifests.git',
-                branch: 'main'
-            }
-        }
+       // stage('Checkout K8S manifest SCM'){
+           // steps {
+             //   git credentialsId: 'my-github-id', url: 'https://github.com/ivishsaggam/cicd-k8s-manifests.git',
+              //  branch: 'main'
+            //}
+        //}
         
         stage('Update K8S manifest & push to Repo'){
             environment{
