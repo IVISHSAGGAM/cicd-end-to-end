@@ -65,7 +65,7 @@ pipeline {
                         cat k8s-manifests/deploy.yml
                         git add k8s-manifests/deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
-                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                        git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
                         '''                        
                     }
                 }
