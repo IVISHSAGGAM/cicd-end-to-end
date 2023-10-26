@@ -63,7 +63,7 @@ pipeline {
                         cat k8s-manifests/deploy.yml
                         git config user.email "vishal.saggam72@gmail.com"
                         git config user.name "Vishal Saggam"
-                        sed -i "s|image: ivishsaggam/todo:[0-9]\+|image: ivishsaggam/todo:${BUILD_NUMBER}|g" k8s-manifests/deploy.yml
+                        sed -i "s|image: ivishsaggam/todo:[0-9]\\+|image: ivishsaggam/todo:${BUILD_NUMBER}|g" k8s-manifests/deploy.yml
                         cat k8s-manifests/deploy.yml
                         git add k8s-manifests/deploy.yml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
