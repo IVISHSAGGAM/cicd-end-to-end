@@ -56,7 +56,7 @@ pipeline {
             }
             steps {
                 script{
-                    withCredentials([usernamePassword(credentialsId: 'my-github-id', variable: 'GITHUB_TOKEN')]) {
+                    withCredentials([usernamePassword(credentialsId: 'my-github-id', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                         sh '''
                         cat k8s-manifests/deploy.yml
                         git config user.email "vishal.saggam72@gmail.com"
