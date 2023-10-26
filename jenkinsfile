@@ -44,7 +44,7 @@ pipeline {
         
         stage('Checkout K8S manifest SCM'){
             steps {
-                git credentialsId: 'my-github-id', url: 'https://github.com/IVISHSAGGAM/cicd-k8s-manifests.git',
+                git credentialsId: 'my-github-id', url: 'https://ivishsaggam@github.com/ivishsaggam/cicd-k8s-manifests.git',
                 branch: 'main'
             }
         }
