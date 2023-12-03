@@ -63,8 +63,8 @@ pipeline {
             git config user.email "vishal.saggam72@gmail.com"
             git config user.name "ivishsaggam"
             BUILD_NUMBER=${BUILD_NUMBER}
-            sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" CICD_Java_Maven_k8s_Manifests/deployment.yml
-            git add CICD_Java_Maven_k8s_Manifests/deployment.yml
+            sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" cicd-k8s-manifests/deployment.yml
+            git add cicd-k8s-manifests/deployment.yml
             git commit -m "Update deployment image to version ${BUILD_NUMBER}"
             git push https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
           '''                 
