@@ -60,15 +60,14 @@ pipeline {
                     def NEW_IMAGE_TAG = BUILD_NUMBER.toString()
                     withCredentials([usernamePassword(credentialsId: 'my-github-id', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
                         sh '''
-                        cat k8s-manifests/deploy.yml
-                        git config user.email "vishal.saggam72@gmail.com"
-                        git config user.name "Vishal Saggam"
-                        sed -i "s|image: ivishsaggam/todo:[0-9]\\+|image: ivishsaggam/todo:${BUILD_NUMBER}|g" k8s-manifests/deploy.yml
-                        cat k8s-manifests/deploy.yml
-                        git add k8s-manifests/deploy.yml
-                        git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
-                        git push https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git HEAD:main
-                        '''                        
+            git config user.email "vishal.saggam72@gmail.com"
+            git config user.name "ivishsaggam"
+            BUILD_NUMBER=${BUILD_NUMBER}
+            sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" CICD_Java_Maven_k8s_Manifests/deployment.yml
+            git add CICD_Java_Maven_k8s_Manifests/deployment.yml
+            git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+            git push https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+          '''                 
                     }
                 }
             }
